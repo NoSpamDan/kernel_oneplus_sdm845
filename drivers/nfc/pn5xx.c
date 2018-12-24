@@ -1293,6 +1293,8 @@ static int pn544_probe(struct i2c_client *client,
 
     init_completion(&dwp_onoff_sema);
 
+    init_completion(&dwp_onoff_sema);
+
     return 0;
 
     err_request_irq_failed:
