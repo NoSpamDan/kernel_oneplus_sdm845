@@ -129,6 +129,8 @@ int gf_parse_dts(struct gf_dev* gf_dev)
 
 	return rc;
 
+	return rc;
+
 err_irq:
 	devm_gpio_free(dev, gf_dev->reset_gpio);
 err_reset:
