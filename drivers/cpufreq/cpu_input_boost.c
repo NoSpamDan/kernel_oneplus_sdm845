@@ -132,7 +132,8 @@ void cpu_input_boost_kick(void)
 	if (!b)
 		return;
 
-	queue_work(b->wq, &b->input_boost);
+	if (likely(input_boost_duration))
+		queue_work(b->wq, &b->input_boost);
 }
 
 static void __cpu_input_boost_kick_max(struct boost_drv *b,
@@ -291,7 +292,8 @@ static void cpu_input_boost_input_event(struct input_handle *handle,
 	if (!(state & SCREEN_AWAKE))
 		return;
 
-	queue_work(b->wq, &b->input_boost);
+	if (likely(input_boost_duration))
+		queue_work(b->wq, &b->input_boost);
 }
 
 static int cpu_input_boost_input_connect(struct input_handler *handler,
